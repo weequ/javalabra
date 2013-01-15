@@ -1,0 +1,16 @@
+Aihe: kaksinpeli-shakki
+Toteutetaan vuoropohjainen lautapeli nimelt‰ shakki, jossa kaksi pelaajaa siirt‰v‰t nappulaa vuorotellen.
+
+K‰ytt‰j‰t: Pelaaja1 ja Pelaaja2
+
+Pelaajan toiminnot: Pelaaja valitsee siirrett‰v‰n nappulan klikkaamalla, 
+jonka j‰lkeen ohjelma v‰ritt‰‰ valitulle nappulalle mahdolliset siirtovuorot.
+
+Vuoro vaihtuu toiselle pelaajalle kun pelaaja klikkaa v‰ritetty‰ ruutua.
+
+Keskener‰isen pelin voi tallentaa tiedostoon Tallenna nappulasta ja tallennettua peli‰ voi jatkaa Avaa nappulasta.
+
+
+Mahdollista laajentaa:
+-Siirtohistoria ja siirron peruutus toiminto.
+-Shakkikello
