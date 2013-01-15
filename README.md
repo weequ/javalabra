@@ -1,4 +1,6 @@
-javalabra
+﻿javalabra
 =========
 
 Ohjelmoinnin harjoitustyö
+
+kaksinpelishakki
