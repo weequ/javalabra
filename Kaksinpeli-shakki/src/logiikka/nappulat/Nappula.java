@@ -5,6 +5,7 @@
 package logiikka.nappulat;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import logiikka.lauta.Ruudukko;
 import logiikka.lauta.Ruutu;
 
@@ -17,12 +18,31 @@ public abstract class Nappula {
     private Ruutu ruutu;
     private Vari vari;
     
-    private Point[][] kaveleTaiSyo;
+    protected Point[] kaveleTaiSyo;
+    protected int maxAskeleet;
     
-    public Ruutu[] laskeSiirtoMahdollisuudet() {
+    
+    public abstract char getTallennusMerkki();
+    
+    public ArrayList<Ruutu> laskeSiirtoMahdollisuudet() {//Sotilas ylikirjoittaa tämän
+        ArrayList<Ruutu> tulos = new ArrayList<Ruutu>();
+        for (int siirto = 0; siirto < kaveleTaiSyo.length; siirto++) {
+            for (int askeleet = 1; askeleet < maxAskeleet; askeleet++) {
+                Ruudukko r = ruutu.getRuudukko();
+                Ruutu kasiteltavaRuutu = r.getRuutu(this.ruutu.getX()+kaveleTaiSyo[0].x, this.ruutu.getY()+kaveleTaiSyo[0].y);
+                if (kasiteltavaRuutu.getNappula() == null) {
+                    tulos.add(kasiteltavaRuutu);
+                    continue;
+                } else {
+                    if (!kasiteltavaRuutu.getNappula().getVari().equals(this.ruutu.getNappula().getVari())) {
+                        tulos.add(kasiteltavaRuutu);
+                    }
+                    break;
+                }
+            }
+        }
         return null;
     }
-    public abstract char getTallennusMerkki();
     
     public Nappula(Vari vari) {
         this.vari = vari;
@@ -40,130 +60,13 @@ public abstract class Nappula {
     public Vari getVari() {
         return vari;
     }
-    
-    public static class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
-        private final static char TALLENNUSMERKKI = 's';
-        private final Point[] kavele = null;
-        private final Point[] syo = null;
-        
-        public Sotilas(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            Ruutu ruutu = getRuutu();
-            Ruudukko ruudukko = ruutu.getRuudukko();
-            Vari vari = getVari();
-            if (vari.equals(Vari.MUSTA)) {
-                ruudukko.getRuutu(ruutu.getX(), ruutu.getY());
-            } else if (vari.equals(Vari.VALKOINEN)) {
-                ruudukko.getRuutu(ruutu.getX(), ruutu.getY());
-            }
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    public static class Lahetti extends Nappula {
-        private final static char TALLENNUSMERKKI = 'l';
-        private final static Point[] kaveleTaiSyo = 
-        {new Point(1, 1), new Point(2, 2), new Point(3, 3), 
-         new Point(4, 4), new Point(5, 5), new Point(6, 6), new Point(7, 7)};
-        public Lahetti(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    public static class Ratsu extends Nappula {
-        private final static char TALLENNUSMERKKI = 'r';
-        public Ratsu(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    public static class Torni extends Nappula {
-        private final static char TALLENNUSMERKKI = 't';
-        public Torni(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    public static class Kuningatar extends Nappula {
-        private final static char TALLENNUSMERKKI = 'q';
-        public Kuningatar(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    public static class Kuningas extends Nappula {
-        private final static char TALLENNUSMERKKI = 'k';
-        public Kuningas(Vari vari) {
-            super(vari);
-        }
-
-        @Override
-        public Ruutu[] laskeSiirtoMahdollisuudet() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public char getTallennusMerkki() {
-            return TALLENNUSMERKKI;
-        }
-    }
-    
-    
+ 
     
     
     public static void main(String[] args) {
-        Sotilas nappula = new Nappula.Sotilas(Vari.MUSTA);
-        Lahetti nappula2 = new Nappula.Lahetti(Vari.VALKOINEN);
-        Nappula nappula3 = new Nappula.Kuningas(Vari.VALKOINEN);
+        Sotilas nappula = new Sotilas(Vari.MUSTA);
+        Lahetti nappula2 = new Lahetti(Vari.VALKOINEN);
+        Nappula nappula3 = new Kuningas(Vari.VALKOINEN);
         System.out.println(nappula.getTallennusMerkki());
         System.out.println(nappula2.getTallennusMerkki());
         System.out.println(nappula3.getTallennusMerkki());

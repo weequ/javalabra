@@ -25,6 +25,10 @@ public class Ruutu {
         return ruudukko;
     }
     
+    public Nappula getNappula() {
+        return nappula;
+    }
+    
     public int getX() {
         return x;
     }
