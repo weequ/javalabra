@@ -1,8 +1,8 @@
-mt,mr,ml,mq,mk,ml,mr,mt
+mt,mr,ml,md,mk,ml,mr,mt
 ms,ms,ms,ms,ms,ms,ms,ms
 aa,aa,aa,aa,aa,aa,aa,aa
 aa,aa,aa,aa,aa,aa,aa,aa
 aa,aa,aa,aa,aa,aa,aa,aa
 aa,aa,aa,aa,aa,aa,aa,aa
 vs,vs,vs,vs,vs,vs,vs,vs
-vt,vr,vl,vq,vk,vl,vr,vt
+vt,vr,vl,vd,vk,vl,vr,vt

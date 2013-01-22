@@ -13,7 +13,7 @@ import logiikka.lauta.Ruutu;
  * @author Antti
  */
 public class Kuningatar extends Nappula {
-    private final static char TALLENNUSMERKKI = 'q';
+    private final static char TALLENNUSMERKKI = 'd';
     public Kuningatar(Vari vari) {
         super(vari);
         kaveleTaiSyo = new Point[8];

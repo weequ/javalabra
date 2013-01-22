@@ -41,7 +41,7 @@ public abstract class Nappula {
                 }
             }
         }
-        return null;
+        return tulos;
     }
     
     public Nappula(Vari vari) {
@@ -59,17 +59,5 @@ public abstract class Nappula {
     
     public Vari getVari() {
         return vari;
-    }
- 
-    
-    
-    public static void main(String[] args) {
-        Sotilas nappula = new Sotilas(Vari.MUSTA);
-        Lahetti nappula2 = new Lahetti(Vari.VALKOINEN);
-        Nappula nappula3 = new Kuningas(Vari.VALKOINEN);
-        System.out.println(nappula.getTallennusMerkki());
-        System.out.println(nappula2.getTallennusMerkki());
-        System.out.println(nappula3.getTallennusMerkki());
-        //nappula.
     }
 }
