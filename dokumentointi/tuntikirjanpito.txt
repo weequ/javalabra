@@ -1,3 +1,5 @@
 15.1: 1h 20min
-19.1: 2h
-20.1: 6h
+19.1: 2h (Yritin periytt‰‰ Nappula luokan alaluokille yhteisi‰ static kentti‰, mik‰ ei onnistunut ja annoin periksi)
+20.1: 6h P‰hk‰ily‰ luokkakaavion ja ohjelman rakenteen kanssa
+22.1: 2h Testien tekoa. Oli hieman hankala p‰‰st‰ alkuun kun viimeksi kirjoittelin testej‰ ohjelmoinnin mallintamis kurssilla n9kk sitten.
+
