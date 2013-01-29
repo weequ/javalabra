@@ -5,17 +5,18 @@
 package logiikka.nappulat;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import logiikka.lauta.Ruutu;
+import java.awt.image.BufferedImage;
+import kayttoliittyma.Kuvat;
+import logiikka.joukkueet.Joukkue;
 
 /**
  *
  * @author Antti
  */
 public class Ratsu extends Nappula {
-    private final static char TALLENNUSMERKKI = 'r';
-    public Ratsu(Vari vari) {
-        super(vari);
+    public final static char TALLENNUSMERKKI = 'r';
+    public Ratsu(Joukkue joukkue) {
+        super(joukkue);
         kaveleTaiSyo = new Point[8];
         kaveleTaiSyo[0] = new Point(1, 2);
         kaveleTaiSyo[1] = new Point(2, 1);
@@ -31,5 +32,14 @@ public class Ratsu extends Nappula {
     @Override
     public char getTallennusMerkki() {
         return TALLENNUSMERKKI;
+    }
+
+    @Override
+    public BufferedImage getKuva() {
+        if (this.getJoukkue().equals(Joukkue.MUSTA)) {
+            return Kuvat.MUSTA_RATSU;
+        } else {
+            return Kuvat.VALKOINEN_RATSU;
+        }
     }
 }

@@ -4,6 +4,7 @@
  */
 package logiikka.nappulat;
 
+import logiikka.joukkueet.Joukkue;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Antti
  */
-public class VariTesti {
+public class JoukkueTesti {
     
-    public VariTesti() {
+    public JoukkueTesti() {
     }
     
     @BeforeClass
@@ -42,11 +43,11 @@ public class VariTesti {
     // public void hello() {}
     @Test
     public void testaaMusta() {
-        assertEquals(Vari.MUSTA.getTallennusMerkki(), 'm');
+        assertEquals(Joukkue.MUSTA.getTallennusMerkki(), 'm');
     }
     
     @Test
     public void testaaValkoinen() {
-        assertEquals(Vari.VALKOINEN.getTallennusMerkki(), 'v');
+        assertEquals(Joukkue.VALKOINEN.getTallennusMerkki(), 'v');
     }
 }

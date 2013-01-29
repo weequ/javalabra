@@ -16,7 +16,8 @@ public class Ruutu {
     private int y;
     private Nappula nappula;
     
-    public Ruutu(int x, int y) {
+    public Ruutu(int x, int y, Ruudukko ruudukko) {
+        this.ruudukko = ruudukko;
         this.x = x;
         this.y = y;
     }
@@ -35,5 +36,9 @@ public class Ruutu {
     
     public int getY() {
         return y;
+    }
+    
+    public void setNappula(Nappula nappula) {
+        this.nappula = nappula;
     }
 }

@@ -2,4 +2,7 @@
 19.1: 2h (Yritin periyttää Nappula luokan alaluokille yhteisiä static kenttiä, mikä ei onnistunut ja annoin periksi)
 20.1: 6h Pähkäilyä luokkakaavion ja ohjelman rakenteen kanssa
 22.1: 2h Testien tekoa. Oli hieman hankala päästä alkuun kun viimeksi kirjoittelin testejä ohjelmoinnin mallintamis kurssilla n9kk sitten.
+27.1: 2,5h Graafisen käyttöliittymän tekoa.
+28.1: 1h    ---- | | ----
+29.1: 5h
 
