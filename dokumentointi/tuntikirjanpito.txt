@@ -4,5 +4,5 @@
 22.1: 2h Testien tekoa. Oli hieman hankala päästä alkuun kun viimeksi kirjoittelin testejä ohjelmoinnin mallintamis kurssilla n9kk sitten.
 27.1: 2,5h Graafisen käyttöliittymän tekoa.
 28.1: 1h    ---- | | ----
-29.1: 5h
+29.1: 6h Graafista käyttöliittymää, logiikkaa ja testejä.
 
