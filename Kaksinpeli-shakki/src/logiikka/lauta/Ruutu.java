@@ -27,7 +27,7 @@ public class Ruutu {
     }
     
     public Nappula getNappula() {
-        return nappula;
+        return this.nappula;
     }
     
     public int getX() {

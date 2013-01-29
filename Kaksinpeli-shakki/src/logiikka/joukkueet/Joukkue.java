@@ -45,12 +45,4 @@ public class Joukkue {
         }
         return null;
     }
-    
-    public class Musta {
-        
-    }
-    
-    public class Valkoinen {
-        
-    }
 }

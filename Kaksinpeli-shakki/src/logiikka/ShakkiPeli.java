@@ -22,6 +22,7 @@ public class ShakkiPeli {
         Lukija lukija = new Lukija("aloitusLauta.txt");
         ruudukko = new Ruudukko(lukija.getText());
         GUI gui = new GUI(this);
+        vuoro = Joukkue.VALKOINEN;
     }
     
     public Ruudukko getRuudukko() {
