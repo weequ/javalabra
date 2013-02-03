@@ -5,16 +5,12 @@
 package kayttoliittyma;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
-import java.util.Hashtable;
 import javax.imageio.ImageIO;
 
 /**
- *
+ * Kuvien hallintaan tarkoitettu luokka
  * @author Antti
  */
 public class Kuvat {

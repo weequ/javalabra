@@ -7,11 +7,10 @@ package logiikka;
 import kayttoliittyma.GUI;
 import logiikka.joukkueet.Joukkue;
 import logiikka.lauta.Ruudukko;
-import logiikka.nappulat.Nappula;
 import tiedostonLuku.Lukija;
 
 /**
- *
+ * Isäntäluokka josta käsin on saatavilla kaikki shakkipelin kannalta olennainen tieto.
  * @author Antti
  */
 public class ShakkiPeli {
@@ -22,7 +21,7 @@ public class ShakkiPeli {
         Lukija lukija = new Lukija("aloitusLauta.txt");
         ruudukko = new Ruudukko(lukija.getText());
         GUI gui = new GUI(this);
-        vuoro = Joukkue.VALKOINEN;
+        setVuoro(Joukkue.VALKOINEN);
     }
     
     public Ruudukko getRuudukko() {
@@ -35,13 +34,16 @@ public class ShakkiPeli {
     
     public void setVuoro(Joukkue vuoro) {
         this.vuoro = vuoro;
+        this.vuoro.laskeSiirtoMahdollisuudet(true);
+        this.vuoro.getVastustaja().laskeSiirtoMahdollisuudet(false);
+        if (this.vuoro.onkoShakattu()) System.out.println("Shakki!");
     }
     
     public void vaihdaVuoroa() {
         if (vuoro.equals(Joukkue.MUSTA)) {
-            vuoro = Joukkue.VALKOINEN;
+            setVuoro(Joukkue.VALKOINEN);
         } else {
-            vuoro = Joukkue.MUSTA;
+            setVuoro(Joukkue.MUSTA);
         }
     }
     

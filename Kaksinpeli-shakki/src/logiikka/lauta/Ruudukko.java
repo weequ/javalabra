@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package logiikka.lauta;
 
 import logiikka.nappulat.Nappula;
 
 /**
- *
+ * Ruudukko eli shakkilauta sisältää ruudut.
  * @author Antti
  */
 public class Ruudukko {

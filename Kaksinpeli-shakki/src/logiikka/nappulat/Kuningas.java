@@ -10,7 +10,8 @@ import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 
 /**
- *
+ * Kuningas on shakin tärkein nappula.
+ * @see Nappula
  * @author Antti
  */
 public class Kuningas extends Nappula {
@@ -27,6 +28,7 @@ public class Kuningas extends Nappula {
         kaveleTaiSyo[6] = new Point(-1, 0);
         kaveleTaiSyo[7] = new Point(-1, 1);
         maxAskeleet = 1;
+        joukkue.setKuningas(this);
     }
 
     @Override

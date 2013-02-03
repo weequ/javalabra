@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package logiikka.lauta;
 
 import logiikka.nappulat.Nappula;
 
 /**
- *
+ * Ruutu määrittelee yksittäiselle shakkilaudan ruudulle ominaisuuksia.
  * @author Antti
  */
 public class Ruutu {

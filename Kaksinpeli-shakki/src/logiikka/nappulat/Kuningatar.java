@@ -10,7 +10,7 @@ import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 
 /**
- *
+ * @see Nappula
  * @author Antti
  */
 public class Kuningatar extends Nappula {

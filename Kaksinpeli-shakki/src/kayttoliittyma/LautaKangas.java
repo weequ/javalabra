@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package kayttoliittyma;
 
 import java.awt.Color;
@@ -11,12 +7,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import logiikka.ShakkiPeli;
-import logiikka.lauta.Ruudukko;
 import logiikka.lauta.Ruutu;
 import logiikka.nappulat.Nappula;
 
 /**
- *
+ * Tämän luokan tehtävänä on piirtää shakkipelin tilannetta ja siirtomahdollisuuksia.
  * @author Antti
  */
 public class LautaKangas extends JComponent {
@@ -31,6 +26,9 @@ public class LautaKangas extends JComponent {
         setShakkiPeli(shakkiPeli);
     }
     
+    /**
+     * Luo uuden lautakangas olion ja alustaa sen.
+     */
     public LautaKangas() {
         setPreferredSize(new Dimension(RUUDUN_KOKO*8, RUUDUN_KOKO*8));
         addMouseListener(new MouseAdapter() {
@@ -45,21 +43,23 @@ public class LautaKangas extends JComponent {
     }
     
     /**
-     * 
+     * Määrittelee mitä tapahtuu kun ruudukon koordinaattia (x, y) klikataan.
      * @param x Mitä saraketta klikattiin
      * @param y Mitä riviä klikattiin
      */
     private void hallitseKlikkaus(int x, int y) {
+        Ruutu klikattuRuutu = shakkiPeli.getRuudukko().getRuutu(x, y);
         if (valittu != null) {
-            Ruudukko ruudukko = shakkiPeli.getRuudukko();
-            Ruutu klikattuRuutu = ruudukko.getRuutu(x, y);
-            if (valittu.getSiirtoMahdollisuudet().contains(klikattuRuutu)) {//Klikattu ruutu on siirtomahdollisuuksien joukossa
-                klikattuRuutu.setNappula(valittu);
-                valittu.getRuutu().setNappula(null);
-                valittu.setRuutu(klikattuRuutu);
-                valittu = null;
-            } else valittu = shakkiPeli.getRuudukko().getRuutu(x, y).getNappula();
-        } else valittu = shakkiPeli.getRuudukko().getRuutu(x, y).getNappula();
+            if (valittu.getSiirtoMahdollisuudet().contains(klikattuRuutu) && 
+                    valittu.getJoukkue().equals(shakkiPeli.getVuoro())) {//Klikattu ruutu on siirtomahdollisuuksien joukossa
+                valittu.siirrä(klikattuRuutu);
+                shakkiPeli.vaihdaVuoroa();
+                setValittu(null);
+                repaint();
+                return;
+            }
+        }
+        setValittu(klikattuRuutu.getNappula());
         repaint();
     }
     
@@ -67,7 +67,11 @@ public class LautaKangas extends JComponent {
         this.shakkiPeli = shakkiPeli;
     }
     
-    public void piirraTausta(Graphics g) {
+    /**
+     * Piirtää shakkilaudan mutta ei nappuloita.
+     * @param g Graphics olio johon piirretään.
+     */
+    private void piirraTausta(Graphics g) {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
                 if (x%2 == y%2) {
@@ -80,39 +84,65 @@ public class LautaKangas extends JComponent {
         }
     }
     
-    public void piirraSiirtoMahdollisuudet(Graphics g) {
+    /**
+     * Tummentaa valitun nappulan siirtomahdollisuudet.
+     * @param g Graphics olio johon piirretään.
+     */
+    private void piirraSiirtoMahdollisuudet(Graphics g) {
         if (valittu == null) return;
         Color c = new Color(0f, 1f, 0f, 0.3f);
         g.setColor(c);
-        valittu.laskeSiirtoMahdollisuudet(true);
         for (Ruutu r: valittu.getSiirtoMahdollisuudet()) {
             if (r == null) continue;
-            System.out.println(r.getX()+", "+r.getY());
             g.fillRect(r.getX()*RUUDUN_KOKO, r.getY()*RUUDUN_KOKO, RUUDUN_KOKO, RUUDUN_KOKO);
         }
     }
     
-    public void piirraValittu(Graphics g) {
+    /**
+     * Tummentaa valitun nappulan ruudun punaisella.
+     * @param g Graphics olio johon piirretään.
+     */
+    private void piirraValittu(Graphics g) {
         if (valittu == null) return;
         Color c = new Color(1f, 0f, 0f, 0.3f);
         g.setColor(c);
         g.fillRect(valittu.getRuutu().getX()*RUUDUN_KOKO, valittu.getRuutu().getY()*RUUDUN_KOKO, RUUDUN_KOKO, RUUDUN_KOKO);
     }
     
+    public boolean setValittu(Nappula valittu) {
+        if (valittu != null && !valittu.getJoukkue().equals(shakkiPeli.getVuoro())) {
+            return false;
+        }
+        this.valittu = valittu;
+        return true;
+    }
+    
+    /**
+     * Piirtää ruudukossa olevat shakkinappulat
+     * @param g Graphics olio johon piirretään.
+     */
+    private void piirraNappulat(Graphics g) {
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                try {
+                    g.drawImage(shakkiPeli.getRuudukko().getRuutu(x, y).getNappula().getKuva(), x*RUUDUN_KOKO, y*RUUDUN_KOKO, this);
+                } catch (Exception e) {
+                    //Näitä virheitä tulee kun ruudussa ei ole nappulaa.
+                }
+            }
+        }
+    }
+    
+    /**
+     * Piirtää shakkilaudan ja nappulat sekä värittää valitun ruudun ja siirtomahdollisuudet.
+     * @param g 
+     */
     @Override
     public void paint(Graphics g) {
         piirraTausta(g);
         if (shakkiPeli.getRuudukko() == null) return;
         piirraValittu(g);
         piirraSiirtoMahdollisuudet(g);
-        for (int y = 0; y < 8; y++) {
-            for (int x = 0; x < 8; x++) {
-                try {
-                    g.drawImage(shakkiPeli.getRuudukko().getRuutu(x, y).getNappula().getKuva(), x*RUUDUN_KOKO, y*RUUDUN_KOKO, this);
-                } catch (Exception e) {
-                    
-                }
-            }
-        }
+        piirraNappulat(g);
     }
 }

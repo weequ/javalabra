@@ -4,14 +4,11 @@
  */
 package kayttoliittyma;
 
-import java.io.FileNotFoundException;
 import javax.swing.JFrame;
 import logiikka.ShakkiPeli;
-import logiikka.lauta.Ruudukko;
-import tiedostonLuku.Lukija;
 
 /**
- *
+ * Luokka joka sisältää ohjelman graafiset komponentit
  * @author Antti
  */
 public class GUI extends JFrame {

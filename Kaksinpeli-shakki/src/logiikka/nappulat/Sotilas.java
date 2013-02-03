@@ -13,7 +13,7 @@ import logiikka.lauta.Ruudukko;
 import logiikka.lauta.Ruutu;
 
 /**
- *
+ * @see Nappula
  * @author Antti
  */
 public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
@@ -36,7 +36,7 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
 
     @Override
     public void laskeSiirtoMahdollisuudet(boolean tarkista) {
-        ArrayList<Ruutu> tulos = new ArrayList<>();
+        siirtoMahdollisuudet.clear();
         Ruutu ruutu = getRuutu();
         Ruudukko ruudukko = ruutu.getRuudukko();
         Joukkue joukkue = getJoukkue();
@@ -55,7 +55,7 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
             Ruutu kasiteltavaRuutu = ruudukko.getRuutu(ruutu.getX()+kavele[i].x, ruutu.getY()+kavele[i].y*kerroin);
             if (kasiteltavaRuutu == null) continue;
             if (kasiteltavaRuutu.getNappula() == null) {
-                tulos.add(kasiteltavaRuutu);
+                lisaaSiirtoMahdollisuus(kasiteltavaRuutu, tarkista);
             } else break;
         }
         for (int i = 0; i < syo.length; i++) {
@@ -63,9 +63,8 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
             if (kasiteltavaRuutu == null) continue;
             Nappula kasiteltavaNappula = kasiteltavaRuutu.getNappula();
             if (kasiteltavaNappula == null) continue;
-            if (kasiteltavaNappula.getJoukkue() != this.getJoukkue()) tulos.add(kasiteltavaRuutu);
+            if (kasiteltavaNappula.getJoukkue() != this.getJoukkue()) lisaaSiirtoMahdollisuus(kasiteltavaRuutu, tarkista);
         }
-        siirtoMahdollisuudet = tulos;
     }
 
     @Override
