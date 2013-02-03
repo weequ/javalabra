@@ -29,6 +29,11 @@ public class Kuvat {
     public static final BufferedImage VALKOINEN_RATSU = lataaKuva("kuvat\\nappulat\\valkoiset\\Ratsu.png");
     public static final BufferedImage VALKOINEN_SOTILAS = lataaKuva("kuvat\\nappulat\\valkoiset\\Sotilas.png");
  
+    /**
+     * Siirtää kuvan kovalevyltä välimuistiin.
+     * @param polku Tiedostopolku josta kuvaa etsitään.
+     * @return Kuva. Null jos kuvan avaaminen epäonnistuu.
+     */
     private static BufferedImage lataaKuva(String polku) {
         try {
             return ImageIO.read(new File(polku));

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package logiikka;
 
 import kayttoliittyma.GUI;
@@ -32,6 +28,10 @@ public class ShakkiPeli {
         return vuoro;
     }
     
+    /**
+     * Vaihtaa vuoron ja päivittää siirtomahdollisuudet.
+     * @param vuoro 
+     */
     public void setVuoro(Joukkue vuoro) {
         this.vuoro = vuoro;
         this.vuoro.laskeSiirtoMahdollisuudet(true);
@@ -39,6 +39,9 @@ public class ShakkiPeli {
         if (this.vuoro.onkoShakattu()) System.out.println("Shakki!");
     }
     
+    /**
+     * Vaihtaa vuoron
+     */
     public void vaihdaVuoroa() {
         if (vuoro.equals(Joukkue.MUSTA)) {
             setVuoro(Joukkue.VALKOINEN);
@@ -47,6 +50,11 @@ public class ShakkiPeli {
         }
     }
     
+    /**
+     * Käynnistää Kaksinpeli-shakin ja graafisen käyttöliittymän.
+     * @param args Mitä tahansa(ei merkitystä).
+     * @throws Exception Jos aloitusLauta.txt sisältää vääriä merkkejä
+     */
     public static void main(String[] args) throws Exception {
         new ShakkiPeli();
     }

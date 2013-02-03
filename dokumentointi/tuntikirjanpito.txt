@@ -7,5 +7,5 @@
 29.1: 6h Graafista käyttöliittymää, logiikkaa ja testejä.
 1.1: 1h Koodin siistimistä
 2.1: 2h Shakkien huomioon ottaminen
-3.1: 6h Shakkien huomioon ottaminen (Vuokaavio avuksi), Koodin siistimistä, Javadoc kommenttien kirjoittamista.
+3.1: 9h Shakkien huomioon ottaminen (Vuokaavio avuksi), Koodin siistimistä, Javadoc kommenttien kirjoittamista, sekvenssikaavion kanssa pähkäilyä
 
