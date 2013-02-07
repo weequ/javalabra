@@ -1,6 +1,7 @@
 package logiikka;
 
 import kayttoliittyma.GUI;
+import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 import logiikka.lauta.Ruudukko;
 import tiedostonLuku.Lukija;
@@ -56,6 +57,7 @@ public class ShakkiPeli {
      * @throws Exception Jos aloitusLauta.txt sisältää vääriä merkkejä
      */
     public static void main(String[] args) throws Exception {
+        new Kuvat();
         new ShakkiPeli();
     }
 }

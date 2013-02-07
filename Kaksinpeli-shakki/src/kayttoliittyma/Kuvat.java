@@ -15,20 +15,36 @@ import javax.imageio.ImageIO;
  */
 public class Kuvat {
     
-    public static final BufferedImage MUSTA_KUNINGAS = lataaKuva("kuvat\\nappulat\\mustat\\Kuningas.png");
-    public static final BufferedImage MUSTA_KUNINGATAR = lataaKuva("kuvat\\nappulat\\mustat\\Kuningatar.png");
-    public static final BufferedImage MUSTA_TORNI = lataaKuva("kuvat\\nappulat\\mustat\\Torni.png");
-    public static final BufferedImage MUSTA_LAHETTI = lataaKuva("kuvat\\nappulat\\mustat\\Lahetti.png");
-    public static final BufferedImage MUSTA_RATSU = lataaKuva("kuvat\\nappulat\\mustat\\Ratsu.png");
-    public static final BufferedImage MUSTA_SOTILAS = lataaKuva("kuvat\\nappulat\\mustat\\Sotilas.png");
+    public static BufferedImage MUSTA_KUNINGAS;
+    public static BufferedImage MUSTA_KUNINGATAR;
+    public static BufferedImage MUSTA_TORNI;
+    public static BufferedImage MUSTA_LAHETTI;
+    public static BufferedImage MUSTA_RATSU;
+    public static BufferedImage MUSTA_SOTILAS;
     
-    public static final BufferedImage VALKOINEN_KUNINGAS = lataaKuva("kuvat\\nappulat\\valkoiset\\Kuningas.png");
-    public static final BufferedImage VALKOINEN_KUNINGATAR = lataaKuva("kuvat\\nappulat\\valkoiset\\Kuningatar.png");
-    public static final BufferedImage VALKOINEN_TORNI = lataaKuva("kuvat\\nappulat\\valkoiset\\Torni.png");
-    public static final BufferedImage VALKOINEN_LAHETTI = lataaKuva("kuvat\\nappulat\\valkoiset\\Lahetti.png");
-    public static final BufferedImage VALKOINEN_RATSU = lataaKuva("kuvat\\nappulat\\valkoiset\\Ratsu.png");
-    public static final BufferedImage VALKOINEN_SOTILAS = lataaKuva("kuvat\\nappulat\\valkoiset\\Sotilas.png");
+    public static BufferedImage VALKOINEN_KUNINGAS;
+    public static BufferedImage VALKOINEN_KUNINGATAR;
+    public static BufferedImage VALKOINEN_TORNI;
+    public static BufferedImage VALKOINEN_LAHETTI;
+    public static BufferedImage VALKOINEN_RATSU;
+    public static BufferedImage VALKOINEN_SOTILAS;
  
+    
+    public Kuvat() {
+        MUSTA_KUNINGAS = lataaKuva("kuvat/nappulat/mustat/Kuningas.png");
+        MUSTA_KUNINGATAR = lataaKuva("kuvat/nappulat/mustat/Kuningatar.png");
+        MUSTA_TORNI = lataaKuva("kuvat/nappulat/mustat/Torni.png");
+        MUSTA_LAHETTI = lataaKuva("kuvat/nappulat/mustat/Lahetti.png");
+        MUSTA_RATSU = lataaKuva("kuvat/nappulat/mustat/Ratsu.png");
+        MUSTA_SOTILAS = lataaKuva("kuvat/nappulat/mustat/Sotilas.png");
+        
+        VALKOINEN_KUNINGAS = lataaKuva("kuvat/nappulat/valkoiset/Kuningas.png");
+        VALKOINEN_KUNINGATAR = lataaKuva("kuvat/nappulat/valkoiset/Kuningatar.png");
+        VALKOINEN_TORNI = lataaKuva("kuvat/nappulat/valkoiset/Torni.png");
+        VALKOINEN_LAHETTI = lataaKuva("kuvat/nappulat/valkoiset/Lahetti.png");
+        VALKOINEN_RATSU = lataaKuva("kuvat/nappulat/valkoiset/Ratsu.png");
+        VALKOINEN_SOTILAS = lataaKuva("kuvat/nappulat/valkoiset/Sotilas.png");
+    }
     /**
      * Siirtää kuvan kovalevyltä välimuistiin.
      * @param polku Tiedostopolku josta kuvaa etsitään.
@@ -36,9 +52,10 @@ public class Kuvat {
      */
     private static BufferedImage lataaKuva(String polku) {
         try {
-            return ImageIO.read(new File(polku));
+            File file = new File(polku);
+            return ImageIO.read(file);
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e.getCause());
             return null;
         }
     }
