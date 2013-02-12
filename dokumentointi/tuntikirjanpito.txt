@@ -9,3 +9,5 @@
 2.1: 2h Shakkien huomioon ottaminen
 3.1: 9h Shakkien huomioon ottaminen (Vuokaavio avuksi), Koodin siistimistä, Javadoc kommenttien kirjoittamista, sekvenssikaavion kanssa pähkäilyä
 5.1: 0.5h Luokkakaavion päivitys
+11.1 1h Rakenteen muuttamista vertaispalautteen pohjalta.
+12.1 5h Rakenteen muuttamista. Käyttöliittymään avaa ja tallenna nappula joista aukeaa JFileChooser. Luokkakaavion päivittäminen.

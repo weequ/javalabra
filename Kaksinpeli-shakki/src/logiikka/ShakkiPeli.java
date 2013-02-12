@@ -4,7 +4,7 @@ import kayttoliittyma.GUI;
 import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 import logiikka.lauta.Ruudukko;
-import tiedostonLuku.Lukija;
+import tiedostonKasittely.Lukija;
 
 /**
  * Isäntäluokka josta käsin on saatavilla kaikki shakkipelin kannalta olennainen tieto.
@@ -14,11 +14,19 @@ public class ShakkiPeli {
     private Joukkue vuoro;
     private Ruudukko ruudukko;
     
+    /**
+     * Luo uuden shakkipelin aloitusLauta.txt tiedostosta.
+     * @throws Exception 
+     */
     public ShakkiPeli() throws Exception {
         Lukija lukija = new Lukija("aloitusLauta.txt");
         ruudukko = new Ruudukko(lukija.getText());
-        GUI gui = new GUI(this);
         setVuoro(Joukkue.VALKOINEN);
+    }
+    
+    public ShakkiPeli(Ruudukko ruudukko, Joukkue vuoro) {
+        this.ruudukko = ruudukko;
+        setVuoro(vuoro);
     }
     
     public Ruudukko getRuudukko() {
@@ -51,13 +59,4 @@ public class ShakkiPeli {
         }
     }
     
-    /**
-     * Käynnistää Kaksinpeli-shakin ja graafisen käyttöliittymän.
-     * @param args Mitä tahansa(ei merkitystä).
-     * @throws Exception Jos aloitusLauta.txt sisältää vääriä merkkejä
-     */
-    public static void main(String[] args) throws Exception {
-        new Kuvat();
-        new ShakkiPeli();
-    }
 }

@@ -1,4 +1,4 @@
-package tiedostonLuku;
+package tiedostonKasittely;
 
 import java.io.File;
 import java.io.FileNotFoundException;

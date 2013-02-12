@@ -30,7 +30,10 @@ public class Kuvat {
     public static BufferedImage VALKOINEN_SOTILAS;
  
     
-    public Kuvat() {
+    private Kuvat() {
+    }
+    
+    public static void lataaKuvat() {
         MUSTA_KUNINGAS = lataaKuva("kuvat/nappulat/mustat/Kuningas.png");
         MUSTA_KUNINGATAR = lataaKuva("kuvat/nappulat/mustat/Kuningatar.png");
         MUSTA_TORNI = lataaKuva("kuvat/nappulat/mustat/Torni.png");
