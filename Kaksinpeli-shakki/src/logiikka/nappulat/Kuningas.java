@@ -35,14 +35,5 @@ public class Kuningas extends Nappula {
     public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
-
-    @Override
-    public BufferedImage getKuva() {
-        if (this.getJoukkue().equals(Joukkue.MUSTA)) {
-            return Kuvat.MUSTA_KUNINGAS;
-        } else {
-            return Kuvat.VALKOINEN_KUNINGAS;
-        }
-    }
     
 }

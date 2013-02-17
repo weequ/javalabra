@@ -34,12 +34,4 @@ public class Ratsu extends Nappula {
         return TALLENNUSMERKKI;
     }
 
-    @Override
-    public BufferedImage getKuva() {
-        if (this.getJoukkue().equals(Joukkue.MUSTA)) {
-            return Kuvat.MUSTA_RATSU;
-        } else {
-            return Kuvat.VALKOINEN_RATSU;
-        }
-    }
 }

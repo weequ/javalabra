@@ -33,7 +33,6 @@ public abstract class Nappula {
     
     
     public abstract String getTallennusMerkki();
-    public abstract BufferedImage getKuva();
     
     
     /**

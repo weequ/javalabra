@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import logiikka.joukkueet.Joukkue;
+import logiikka.nappulat.Nappula;
 
 /**
  * Kuvien hallintaan tarkoitettu luokka
@@ -31,6 +33,39 @@ public class Kuvat {
  
     
     private Kuvat() {
+    }
+    
+    public static BufferedImage getKuva(Nappula nappula) {
+        if (nappula.getJoukkue().equals(Joukkue.VALKOINEN)) {
+            if (nappula instanceof logiikka.nappulat.Kuningas) {
+                return MUSTA_KUNINGAS;
+            } else if (nappula instanceof logiikka.nappulat.Kuningatar) {
+                return MUSTA_KUNINGATAR;
+            } else if (nappula instanceof logiikka.nappulat.Torni) {
+                return MUSTA_TORNI;
+            } else if (nappula instanceof logiikka.nappulat.Lahetti) {
+                return MUSTA_LAHETTI;
+            } else if (nappula instanceof logiikka.nappulat.Ratsu) {
+                return MUSTA_RATSU;
+            } else if (nappula instanceof logiikka.nappulat.Sotilas) {
+                return MUSTA_SOTILAS;
+            }
+        } else if (nappula.getJoukkue().equals(Joukkue.MUSTA)) {
+            if (nappula instanceof logiikka.nappulat.Kuningas) {
+                return VALKOINEN_KUNINGAS;
+            } else if (nappula instanceof logiikka.nappulat.Kuningatar) {
+                return VALKOINEN_KUNINGATAR;
+            } else if (nappula instanceof logiikka.nappulat.Torni) {
+                return VALKOINEN_TORNI;
+            } else if (nappula instanceof logiikka.nappulat.Lahetti) {
+                return VALKOINEN_LAHETTI;
+            } else if (nappula instanceof logiikka.nappulat.Ratsu) {
+                return VALKOINEN_RATSU;
+            } else if (nappula instanceof logiikka.nappulat.Sotilas) {
+                return VALKOINEN_SOTILAS;
+            }
+        }
+        return null;
     }
     
     public static void lataaKuvat() {

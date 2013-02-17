@@ -37,12 +37,4 @@ public class Kuningatar extends Nappula {
         return TALLENNUSMERKKI;
     }
 
-    @Override
-    public BufferedImage getKuva() {
-        if (this.getJoukkue().equals(Joukkue.MUSTA)) {
-            return Kuvat.MUSTA_KUNINGATAR;
-        } else {
-            return Kuvat.VALKOINEN_KUNINGATAR;
-        }
-    }
 }

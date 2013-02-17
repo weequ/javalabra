@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 import logiikka.ShakkiPeli;
 import logiikka.lauta.Ruutu;
@@ -130,7 +131,8 @@ public class LautaKangas extends JComponent {
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
                 try {
-                    g.drawImage(shakkiPeli.getRuudukko().getRuutu(x, y).getNappula().getKuva(), x*RUUDUN_KOKO, y*RUUDUN_KOKO, this);
+                    BufferedImage kuva = Kuvat.getKuva(shakkiPeli.getRuudukko().getRuutu(x, y).getNappula());
+                    g.drawImage(kuva, x*RUUDUN_KOKO, y*RUUDUN_KOKO, this);
                 } catch (Exception e) {
                     //Näitä virheitä tulee kun ruudussa ei ole nappulaa.
                 }

@@ -72,12 +72,4 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
         return TALLENNUSMERKKI;
     }
 
-    @Override
-    public BufferedImage getKuva() {
-        if (this.getJoukkue().equals(Joukkue.MUSTA)) {
-            return Kuvat.MUSTA_SOTILAS;
-        } else {
-            return Kuvat.VALKOINEN_SOTILAS;
-        }
-    }
 }
