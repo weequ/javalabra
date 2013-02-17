@@ -14,7 +14,7 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Ratsu extends Nappula {
-    public final static char TALLENNUSMERKKI = 'r';
+    public final static String TALLENNUSMERKKI = "r";
     public Ratsu(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[8];
@@ -30,7 +30,7 @@ public class Ratsu extends Nappula {
     }
 
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 

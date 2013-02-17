@@ -109,6 +109,11 @@ public class LautaKangas extends JComponent {
         g.fillRect(valittu.getRuutu().getX()*RUUDUN_KOKO, valittu.getRuutu().getY()*RUUDUN_KOKO, RUUDUN_KOKO, RUUDUN_KOKO);
     }
     
+    /**
+     * Asettaa nappulan valituksi jos on sen joukkueen vuoro.
+     * @param valittu Nappula joka asetetaan valituksi.
+     * @return 
+     */
     public boolean setValittu(Nappula valittu) {
         if (valittu != null && !valittu.getJoukkue().equals(shakkiPeli.getVuoro())) {
             return false;

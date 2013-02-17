@@ -15,7 +15,7 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Kuningas extends Nappula {
-    public final static char TALLENNUSMERKKI = 'k';
+    public final static String TALLENNUSMERKKI = "k";
     public Kuningas(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[8];
@@ -32,7 +32,7 @@ public class Kuningas extends Nappula {
     }
 
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 
@@ -44,4 +44,5 @@ public class Kuningas extends Nappula {
             return Kuvat.VALKOINEN_KUNINGAS;
         }
     }
+    
 }

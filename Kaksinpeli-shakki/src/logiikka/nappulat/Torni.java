@@ -14,7 +14,7 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Torni extends Nappula {
-    public final static char TALLENNUSMERKKI = 't';
+    public final static String TALLENNUSMERKKI = "t";
     public Torni(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[4];
@@ -26,7 +26,7 @@ public class Torni extends Nappula {
     }
 
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 

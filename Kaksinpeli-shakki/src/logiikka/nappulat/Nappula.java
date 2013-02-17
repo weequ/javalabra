@@ -32,7 +32,7 @@ public abstract class Nappula {
     protected int maxAskeleet;
     
     
-    public abstract char getTallennusMerkki();
+    public abstract String getTallennusMerkki();
     public abstract BufferedImage getKuva();
     
     
@@ -162,9 +162,9 @@ public abstract class Nappula {
      */
     public static Nappula luoNappula(String merkki) throws Exception {
         if (merkki.equals("aa")) return null;
-        Joukkue nappulanJoukkue = Joukkue.getJoukkue(merkki.charAt(0));
+        Joukkue nappulanJoukkue = Joukkue.getJoukkue(String.valueOf(merkki.charAt(0)));
         
-        switch (merkki.charAt(1)) {
+        switch (String.valueOf(merkki.charAt(1))) {
             case Kuningas.TALLENNUSMERKKI:
                 return new Kuningas(nappulanJoukkue);
             case Kuningatar.TALLENNUSMERKKI:
@@ -181,4 +181,10 @@ public abstract class Nappula {
                 return null;
         }
     }
+    
+    @Override
+    public String toString() {
+        return getJoukkue().getTallennusMerkki()+getTallennusMerkki();
+    }
+    
 }

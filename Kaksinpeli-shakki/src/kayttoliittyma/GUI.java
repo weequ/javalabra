@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import logiikka.ShakkiPeli;
+import tiedostonKasittely.PeliTiedostoMuuntaja;
 
 /**
  * Luokka joka sisältää ohjelman graafiset komponentit
@@ -35,11 +36,11 @@ public class GUI extends JFrame {
     }
     
     
-    private File kayttajanValitsemaTiedosto(String hyvaksyNappulanTeksti) {
+    private String kayttajanValitsemaTiedosto(String hyvaksyNappulanTeksti) {
         JFileChooser fileChooser = new JFileChooser();
         int tulos = fileChooser.showDialog(this, hyvaksyNappulanTeksti);
         if (tulos == JFileChooser.APPROVE_OPTION) {
-            return fileChooser.getSelectedFile();
+            return fileChooser.getSelectedFile().getAbsolutePath();
         } else {
             return null;
         }
@@ -51,7 +52,14 @@ public class GUI extends JFrame {
         avaaPeli.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                kayttajanValitsemaTiedosto("Open");
+                System.out.println(shakkiPeli);
+                String polku = kayttajanValitsemaTiedosto("Open");
+                ShakkiPeli uusiPeli = PeliTiedostoMuuntaja.avaaPeli(polku);
+                if (uusiPeli != null) {
+                    setShakkiPeli(uusiPeli);
+                } else {
+                    System.out.println("Virhe avattaessa tiedostoa");
+                }
             }
         });
         add(avaaPeli);
@@ -61,7 +69,9 @@ public class GUI extends JFrame {
         tallennaPeli.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                kayttajanValitsemaTiedosto("Save");
+                String polku = kayttajanValitsemaTiedosto("Save");
+                boolean tallennusOnnistui = PeliTiedostoMuuntaja.tallennaPeli(shakkiPeli, polku);
+                if (!tallennusOnnistui) System.out.println("Tallennus epäonnistui");
             }
         });
         add(tallennaPeli);
@@ -73,6 +83,7 @@ public class GUI extends JFrame {
     
     public void setShakkiPeli(ShakkiPeli shakkiPeli) {
         lautaKangas.setShakkiPeli(shakkiPeli);
+        this.shakkiPeli = shakkiPeli;
     }
     
 }

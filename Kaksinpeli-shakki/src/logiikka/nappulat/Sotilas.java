@@ -17,7 +17,7 @@ import logiikka.lauta.Ruutu;
  * @author Antti
  */
 public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
-    public final static char TALLENNUSMERKKI = 's';
+    public final static String TALLENNUSMERKKI = "s";
     private Point[] kavele = new Point[] {new Point(0, -1)};
     private static Point[] syo = new Point[] {new Point(-1, -1), new Point(1, -1)};
 
@@ -68,7 +68,7 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
     }
 
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 

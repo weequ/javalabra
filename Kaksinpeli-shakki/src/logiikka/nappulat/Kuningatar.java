@@ -14,7 +14,7 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Kuningatar extends Nappula {
-    public final static char TALLENNUSMERKKI = 'd';
+    public final static String TALLENNUSMERKKI = "d";
     public Kuningatar(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[8];
@@ -33,7 +33,7 @@ public class Kuningatar extends Nappula {
 
 
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 

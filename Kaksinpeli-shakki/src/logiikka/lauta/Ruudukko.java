@@ -46,4 +46,17 @@ public class Ruudukko {
         }
     }
     
+    @Override
+    public String toString() {
+        String tulos = "";
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                tulos += ruudukko[y][x].toString();
+                if (x < 7) tulos += ",";
+            }
+            if (y < 7) tulos += System.getProperty("line.separator");
+        }
+        return tulos;
+    }
+    
 }

@@ -59,4 +59,9 @@ public class ShakkiPeli {
         }
     }
     
+    @Override
+    public String toString() {
+        return vuoro.getTallennusMerkki()+System.getProperty("line.separator")+ruudukko.toString();
+    }
+    
 }

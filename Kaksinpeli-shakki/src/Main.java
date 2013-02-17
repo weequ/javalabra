@@ -1,7 +1,7 @@
 
 import kayttoliittyma.GUI;
 import kayttoliittyma.Kuvat;
-import logiikka.ShakkiPeli;
+import tiedostonKasittely.PeliTiedostoMuuntaja;
 
 /*
  * To change this template, choose Tools | Templates
@@ -21,6 +21,6 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         Kuvat.lataaKuvat();
-        GUI gui = new GUI(new ShakkiPeli());
+        GUI gui = new GUI(PeliTiedostoMuuntaja.avaaPeli("aloitusLauta.txt"));
     }
 }

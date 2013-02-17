@@ -15,20 +15,20 @@ import logiikka.nappulat.Nappula;
  * @author Antti
  */
 public class Joukkue {
-    public static Joukkue MUSTA = new Joukkue('m');
-    public static Joukkue VALKOINEN = new Joukkue('v');
+    public static Joukkue MUSTA = new Joukkue("m");
+    public static Joukkue VALKOINEN = new Joukkue("v");
     
     private ArrayList<Nappula> nappulat;
     private Kuningas kuningas;
-    private final char TALLENNUSMERKKI;
+    private final String TALLENNUSMERKKI;
     
-    private Joukkue(char tallennusMerkki) {
+    private Joukkue(String tallennusMerkki) {
         nappulat = new ArrayList<>();
         this.TALLENNUSMERKKI = tallennusMerkki;
         kuningas = null;
     }
     
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
     
@@ -40,10 +40,10 @@ public class Joukkue {
         return nappulat.remove(nappula);
     }
     
-    public static Joukkue getJoukkue(char TALLENNUSMERKKI) throws Exception {
-        if (TALLENNUSMERKKI == Joukkue.MUSTA.getTallennusMerkki()) {
+    public static Joukkue getJoukkue(String TALLENNUSMERKKI) throws Exception {
+        if (TALLENNUSMERKKI.equals(Joukkue.MUSTA.getTallennusMerkki())) {
             return Joukkue.MUSTA;
-        } else if (TALLENNUSMERKKI == Joukkue.VALKOINEN.getTallennusMerkki()) {
+        } else if (TALLENNUSMERKKI.equals(Joukkue.VALKOINEN.getTallennusMerkki())) {
             return Joukkue.VALKOINEN;
         } else {
             throw new Exception("Vääränlainen tallennusmerkki.");

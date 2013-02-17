@@ -14,7 +14,7 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Lahetti extends Nappula {
-    public final static char TALLENNUSMERKKI = 'l';
+    public final static String TALLENNUSMERKKI = "l";
     
     public Lahetti(Joukkue joukkue) {
         super(joukkue);
@@ -27,7 +27,7 @@ public class Lahetti extends Nappula {
     }
     
     @Override
-    public char getTallennusMerkki() {
+    public String getTallennusMerkki() {
         return TALLENNUSMERKKI;
     }
 

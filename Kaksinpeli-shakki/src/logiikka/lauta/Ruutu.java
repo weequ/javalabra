@@ -37,4 +37,13 @@ public class Ruutu {
     public void setNappula(Nappula nappula) {
         this.nappula = nappula;
     }
+    
+    @Override
+    public String toString() {
+        if (nappula == null) {
+            return "aa";
+        } else {
+            return nappula.toString();
+        }
+    }
 }
