@@ -12,4 +12,4 @@
 11.1 1h Rakenteen muuttamista vertaispalautteen pohjalta.
 12.1 5h Rakenteen muuttamista. Käyttöliittymään avaa ja tallenna nappula joista aukeaa JFileChooser. Luokkakaavion päivittäminen.
 16.1 1h Tiedostonkäsittelyä
-17.1 3h Tiedostonkäsittelyä, rakenne, GUI
+17.1 6h Tiedostonkäsittelyä, rakenne, GUI, kuvat siirretty kayttoliittyman puolelle
