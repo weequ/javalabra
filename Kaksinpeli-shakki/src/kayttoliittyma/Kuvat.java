@@ -36,7 +36,7 @@ public class Kuvat {
     }
     
     public static BufferedImage getKuva(Nappula nappula) {
-        if (nappula.getJoukkue().equals(Joukkue.VALKOINEN)) {
+        if (nappula.getJoukkue().equals(Joukkue.MUSTA)) {
             if (nappula instanceof logiikka.nappulat.Kuningas) {
                 return MUSTA_KUNINGAS;
             } else if (nappula instanceof logiikka.nappulat.Kuningatar) {
@@ -50,7 +50,7 @@ public class Kuvat {
             } else if (nappula instanceof logiikka.nappulat.Sotilas) {
                 return MUSTA_SOTILAS;
             }
-        } else if (nappula.getJoukkue().equals(Joukkue.MUSTA)) {
+        } else if (nappula.getJoukkue().equals(Joukkue.VALKOINEN)) {
             if (nappula instanceof logiikka.nappulat.Kuningas) {
                 return VALKOINEN_KUNINGAS;
             } else if (nappula instanceof logiikka.nappulat.Kuningatar) {
