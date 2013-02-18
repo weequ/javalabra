@@ -22,17 +22,21 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
     /**
      * Ruudut johon valkoinen sotilas voi kävellä. Mustalle pätee kun y-koordinaatista otetaan vastaluku.
      */
-    private Point[] kavele = new Point[] {new Point(0, -1)};
+    private Point[] kavele = new Point[] {new Point(0, -1), new Point(0, -2)};
+   
     
     /**
      * Ruudut johon valkoinen sotilas voi syödä. Mustalle pätee kun y-koordinaatista otetaan vastaluku.
      */
-    private static Point[] syo = new Point[] {new Point(-1, -1), new Point(1, -1)};
+    private Point[] syo = new Point[] {new Point(-1, -1), new Point(1, -1)};
+    
+    private int maxKavelyEtaisyys;
 
     
     public Sotilas(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[0];
+        muunnaKoordinaatit();
     }
     
     /**
@@ -43,11 +47,10 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
     public void laskeSiirtoMahdollisuudet(boolean tarkista) {
         siirtoMahdollisuudet.clear();
         if (!onkoLiikkunut()) {
-            kavele = new Point[] {new Point(0, -1), new Point(0, -2)};
+            maxKavelyEtaisyys = 2;
         } else {
-            kavele = new Point[] {new Point(0, -1)};
+            maxKavelyEtaisyys = 1;
         }
-        muunnaKoordinaatit();
         laskeKavelyRuudut(tarkista);
         laskeSyontiRuudut(tarkista);
         
@@ -64,7 +67,7 @@ public class Sotilas extends Nappula {//Ei koodattu ohilyontimahdollisuutta
     private void laskeKavelyRuudut(boolean tarkista) {
         Ruutu ruutu = getRuutu();
         Ruudukko ruudukko = ruutu.getRuudukko();
-        for (int i = 0; i < kavele.length; i++) {
+        for (int i = 0; i < maxKavelyEtaisyys; i++) {
             Ruutu kasiteltavaRuutu = ruudukko.getRuutu(ruutu.getX()+kavele[i].x, ruutu.getY()+kavele[i].y);
             if (kasiteltavaRuutu == null) continue;
             if (kasiteltavaRuutu.getNappula() == null) {
