@@ -3,7 +3,7 @@ package logiikka.lauta;
 import logiikka.nappulat.Nappula;
 
 /**
- * Ruudukko eli shakkilauta sisältää ruudut.
+ * Ruudukko eli shakkilauta, joka sisältää ruudut.
  * @author Antti
  */
 public class Ruudukko {

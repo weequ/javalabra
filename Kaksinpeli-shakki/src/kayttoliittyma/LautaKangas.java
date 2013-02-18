@@ -19,8 +19,6 @@ public class LautaKangas extends JComponent {
     private final static int RUUDUN_KOKO = 55;
     private ShakkiPeli shakkiPeli;
     private Nappula valittu;
-//    private Ruudukko ruudukko;
-//    private Nappula valittu;
     
     public LautaKangas(ShakkiPeli shakkiPeli) {
         this();

@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * KESKEN
+ * Kirjoittaa merkkijonon tiedostoon.
  * @author Antti
  */
 public class Kirjoittaja {
@@ -19,6 +19,11 @@ public class Kirjoittaja {
         tiedosto = new File(tiedostoPolku);
     }
     
+    /**
+     * Kirjoittaa merkkijonon tiedostoon niin että vanha teksti pyyhkiytyy pois.
+     * @param teksti Merkkijono joka kirjoitetaan tiedostoon.
+     * @throws IOException 
+     */
     public void kirjoita(String teksti) throws IOException {
         FileWriter kirjoittaja = new FileWriter(tiedosto);
         kirjoittaja.write(teksti);

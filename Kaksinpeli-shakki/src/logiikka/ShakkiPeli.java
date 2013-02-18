@@ -24,6 +24,11 @@ public class ShakkiPeli {
         setVuoro(Joukkue.VALKOINEN);
     }
     
+    /**
+     * Kokoaa ruudukon ja vuoron uudeksi shakkipeliksi
+     * @param ruudukko Shakkipelin käyttämä ruudukko.
+     * @param vuoro Joukkue kumpi aloittaa.
+     */
     public ShakkiPeli(Ruudukko ruudukko, Joukkue vuoro) {
         this.ruudukko = ruudukko;
         setVuoro(vuoro);
@@ -49,7 +54,7 @@ public class ShakkiPeli {
     }
     
     /**
-     * Vaihtaa vuoron
+     * Vaihtaa vuoron toiselle joukkueelle.
      */
     public void vaihdaVuoroa() {
         if (vuoro.equals(Joukkue.MUSTA)) {

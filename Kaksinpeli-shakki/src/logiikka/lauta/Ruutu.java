@@ -3,7 +3,8 @@ package logiikka.lauta;
 import logiikka.nappulat.Nappula;
 
 /**
- * Ruutu määrittelee yksittäiselle shakkilaudan ruudulle ominaisuuksia.
+ * Ruutu määrittelee yksittäiselle shakkilaudan ruudulle ominaisuuksia. 
+ * Ruudulla on koordinaatit ja siihen voi kuulua enintään yksi nappula.
  * @author Antti
  */
 public class Ruutu {

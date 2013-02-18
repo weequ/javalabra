@@ -13,3 +13,5 @@
 12.1 5h Rakenteen muuttamista. Käyttöliittymään avaa ja tallenna nappula joista aukeaa JFileChooser. Luokkakaavion päivittäminen.
 16.1 1h Tiedostonkäsittelyä
 17.1 6h Tiedostonkäsittelyä, rakenne, GUI, kuvat siirretty kayttoliittyman puolelle
+18.1 1h Koodin siistimistä ja javadoc kommentteja
+19.1 1h Koodin siistimistä ja javadoc kommentteja

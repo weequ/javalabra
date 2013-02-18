@@ -28,7 +28,16 @@ public abstract class Nappula {
     private Joukkue joukkue;
     protected ArrayList<Ruutu> siirtoMahdollisuudet;
     
+    /**
+     * Ympäröivät poikkeamapisteet (eng. offset) joihin tämä nappula voi siirtyä.
+     * Esim torni : [(0, 1), (1, 0) , (0, -1), (-1, 0)];
+     */
     protected Point[] kaveleTaiSyo;
+    
+    /**
+     * Kuinka pitkälle kutakin käveleTaiSyo ruutua voidaan edetä.
+     * Esim Kuningas 1, Torni 8, Hevonen 1
+     */
     protected int maxAskeleet;
     
     
@@ -161,7 +170,7 @@ public abstract class Nappula {
      */
     public static Nappula luoNappula(String merkki) throws Exception {
         if (merkki.equals("aa")) return null;
-        Joukkue nappulanJoukkue = Joukkue.getJoukkue(String.valueOf(merkki.charAt(0)));
+        Joukkue nappulanJoukkue = Joukkue.getJoukkue(merkki.charAt(0));
         
         switch (String.valueOf(merkki.charAt(1))) {
             case Kuningas.TALLENNUSMERKKI:

@@ -17,24 +17,29 @@ import logiikka.nappulat.Nappula;
  */
 public class Kuvat {
     
-    public static BufferedImage MUSTA_KUNINGAS;
-    public static BufferedImage MUSTA_KUNINGATAR;
-    public static BufferedImage MUSTA_TORNI;
-    public static BufferedImage MUSTA_LAHETTI;
-    public static BufferedImage MUSTA_RATSU;
-    public static BufferedImage MUSTA_SOTILAS;
+    private static BufferedImage MUSTA_KUNINGAS;
+    private static BufferedImage MUSTA_KUNINGATAR;
+    private static BufferedImage MUSTA_TORNI;
+    private static BufferedImage MUSTA_LAHETTI;
+    private static BufferedImage MUSTA_RATSU;
+    private static BufferedImage MUSTA_SOTILAS;
     
-    public static BufferedImage VALKOINEN_KUNINGAS;
-    public static BufferedImage VALKOINEN_KUNINGATAR;
-    public static BufferedImage VALKOINEN_TORNI;
-    public static BufferedImage VALKOINEN_LAHETTI;
-    public static BufferedImage VALKOINEN_RATSU;
-    public static BufferedImage VALKOINEN_SOTILAS;
+    private static BufferedImage VALKOINEN_KUNINGAS;
+    private static BufferedImage VALKOINEN_KUNINGATAR;
+    private static BufferedImage VALKOINEN_TORNI;
+    private static BufferedImage VALKOINEN_LAHETTI;
+    private static BufferedImage VALKOINEN_RATSU;
+    private static BufferedImage VALKOINEN_SOTILAS;
  
     
     private Kuvat() {
     }
     
+    /**
+     * Palauttaa kuvan joka kuvaa parametria nappula.
+     * @param nappula
+     * @return Parametrina annettua nappulaa vastaava kuva.
+     */
     public static BufferedImage getKuva(Nappula nappula) {
         if (nappula.getJoukkue().equals(Joukkue.MUSTA)) {
             if (nappula instanceof logiikka.nappulat.Kuningas) {
@@ -68,6 +73,9 @@ public class Kuvat {
         return null;
     }
     
+    /**
+     * Lataa kuvat ohjelman tiedostosta välimuistiin.
+     */
     public static void lataaKuvat() {
         MUSTA_KUNINGAS = lataaKuva("kuvat/nappulat/mustat/Kuningas.png");
         MUSTA_KUNINGATAR = lataaKuva("kuvat/nappulat/mustat/Kuningatar.png");
@@ -83,6 +91,7 @@ public class Kuvat {
         VALKOINEN_RATSU = lataaKuva("kuvat/nappulat/valkoiset/Ratsu.png");
         VALKOINEN_SOTILAS = lataaKuva("kuvat/nappulat/valkoiset/Sotilas.png");
     }
+    
     /**
      * Siirtää kuvan kovalevyltä välimuistiin.
      * @param polku Tiedostopolku josta kuvaa etsitään.
