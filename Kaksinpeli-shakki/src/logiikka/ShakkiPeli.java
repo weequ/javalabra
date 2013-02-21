@@ -11,7 +11,14 @@ import tiedostonKasittely.Lukija;
  * @author Antti
  */
 public class ShakkiPeli {
+    /**
+     * Joukkue kenen vuoro on.
+     */
     private Joukkue vuoro;
+    
+    /**
+     * Ruudukko jolla pelataan.
+     */
     private Ruudukko ruudukko;
     
     /**

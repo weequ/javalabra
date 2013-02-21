@@ -8,11 +8,25 @@ import logiikka.nappulat.Nappula;
  * @author Antti
  */
 public class Ruutu {
+    /**
+     * Ruudukko johon tämä ruutu kuuluu.
+     */
     private Ruudukko ruudukko;
-    private int x;
-    private int y;
+    /**
+     * Ruudun koordinaatit. x kasvaa oikealla ja y kasvaa alas.
+     */
+    private int x, y;
+    /**
+     * Ruudussa oleva nappula. Null jos ruutu on tyhjä.
+     */
     private Nappula nappula;
     
+    /**
+     * Luo uuden ruutu olion
+     * @param x Ruudun x-koordinaatti. Kasvaa vasemmalta oikealle.
+     * @param y Ruudun y-koodrinaatti. Kasvaa ylhäältä alaspäin.
+     * @param ruudukko Ruudukko johon tämä ruutu kuuluu.
+     */
     public Ruutu(int x, int y, Ruudukko ruudukko) {
         this.ruudukko = ruudukko;
         this.x = x;

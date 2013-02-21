@@ -5,8 +5,6 @@
 package logiikka.nappulat;
 
 import java.awt.Point;
-import java.awt.image.BufferedImage;
-import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 
 /**
@@ -15,7 +13,16 @@ import logiikka.joukkueet.Joukkue;
  * @author Antti
  */
 public class Kuningas extends Nappula {
+    /**
+     * Merkki joka kuvaa kuningasta tiedostossa.
+     */
     public final static String TALLENNUSMERKKI = "k";
+    
+    /**
+     * Luo uuden kuningas olion.
+     * @param joukkue Joukkue johon kuningas kuuluu
+     * @see Nappula#Nappula(logiikka.joukkueet.Joukkue) 
+     */
     public Kuningas(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[8];

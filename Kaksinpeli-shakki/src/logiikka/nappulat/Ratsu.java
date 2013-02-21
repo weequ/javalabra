@@ -15,6 +15,10 @@ import logiikka.joukkueet.Joukkue;
  */
 public class Ratsu extends Nappula {
     public final static String TALLENNUSMERKKI = "r";
+    
+    /**
+     * @see Nappula#Nappula(logiikka.joukkueet.Joukkue) 
+     */
     public Ratsu(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[8];

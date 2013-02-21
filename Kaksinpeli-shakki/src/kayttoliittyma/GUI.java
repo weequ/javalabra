@@ -34,7 +34,11 @@ public class GUI extends JFrame {
         pack();
     }
     
-    
+    /**
+     * Antaa käyttäjälle tiedostonselausikkunan josta hän valitsee tiedoston talletettavaksi tai avattavaksi.
+     * @param hyvaksyNappulanTeksti Teksti joka lukee hyväksy nappulassa. Esim Open tai Save.
+     * @return Valitun tiedoston tiedostopolku.
+     */
     private String kayttajanValitsemaTiedosto(String hyvaksyNappulanTeksti) {
         JFileChooser fileChooser = new JFileChooser();
         int tulos = fileChooser.showDialog(this, hyvaksyNappulanTeksti);
@@ -45,6 +49,9 @@ public class GUI extends JFrame {
         }
     }
     
+    /**
+     * Lisää avaa ja tallenna nappulan käyttöliittymään.
+     */
     private void lisaaNappulat() {
         //Avaa nappula
         JButton avaaPeli = new JButton("Avaa peli");
@@ -75,10 +82,18 @@ public class GUI extends JFrame {
         add(tallennaPeli);
     }
     
+    /**
+     * Palauttaa käyttöliittymän käyttämän ShakkiPeli olion.
+     * @return ShakkiPeli olio jota käyttöliittymä käyttää.
+     */
     public ShakkiPeli getShakkiPeli() {
         return shakkiPeli;
     }
     
+    /**
+     * Asettaa ShakkiPeli olion käyttöliittymän käytettäväksi.
+     * @param shakkiPeli ShakkiPeli joka asetetaan käyttöliittymän käytettäväksi.
+     */
     public void setShakkiPeli(ShakkiPeli shakkiPeli) {
         lautaKangas.setShakkiPeli(shakkiPeli);
         this.shakkiPeli = shakkiPeli;

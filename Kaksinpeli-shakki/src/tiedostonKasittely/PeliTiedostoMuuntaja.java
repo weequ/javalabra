@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tiedostonKasittely;
 
 import java.io.IOException;
@@ -47,6 +43,12 @@ public class PeliTiedostoMuuntaja {
         return true;
     }
     
+    /**
+     * Tekee trim operaation jokaiselle taulukon alkiolle. Ei muuta parametrina annettua taulukkoa.
+     * @param arr Taulukko jota trimmataan.
+     * @return Trimmattu taulukko
+     * @see String#trim() 
+     */
     private static String[] trimArr(String[] arr) {
         String[] tulos = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -55,7 +57,13 @@ public class PeliTiedostoMuuntaja {
         return tulos;
     }
     
-    private static ShakkiPeli tekstiShakkiPeliksi(String teksti) throws Exception {
+    /**
+     * Muuttaa tiedostosta luetun tekstin ShakkiPeliksi
+     * @param teksti Teksti joka muutetaan shakkipeliksi. Ensimmäinen rivi sisältää parametrit jotka on erotettu pilkulla.
+     * @return Tekstistä muodostettu ShakkiPeli olio.
+     * @throws IllegalArgumentException Jos teksti on virheellinen.
+     */
+    private static ShakkiPeli tekstiShakkiPeliksi(String teksti) throws IllegalArgumentException {
         String rivinVaihto = System.getProperty("line.separator");
         int ensimmainenRivinVaihto = teksti.indexOf(rivinVaihto);
         String ensimmainenRivi = teksti.substring(0, ensimmainenRivinVaihto);
@@ -66,6 +74,11 @@ public class PeliTiedostoMuuntaja {
         return new ShakkiPeli(ruudukko, Joukkue.getJoukkue(parametrit[0].charAt(0)));
     }
     
+    /**
+     * Muuttaa ShakkiPelin tiedostoon tallennettavaksi kelpaavaksi merkkijonoksi.
+     * @param shakkiPeli
+     * @return 
+     */
     private static String shakkiPeliTekstiksi(ShakkiPeli shakkiPeli) {
         return shakkiPeli.toString();
     }

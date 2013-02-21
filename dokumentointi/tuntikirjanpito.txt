@@ -15,3 +15,4 @@
 17.1 6h Tiedostonkäsittelyä, rakenne, GUI, kuvat siirretty kayttoliittyman puolelle
 18.1 1h Koodin siistimistä ja javadoc kommentteja
 19.1 1h Koodin siistimistä ja javadoc kommentteja
+20.1 3h Koodin siistimistä, javadoc kommentteja, dokumentointia.

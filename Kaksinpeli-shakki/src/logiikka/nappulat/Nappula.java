@@ -24,13 +24,27 @@ import logiikka.lauta.Ruutu;
  */
 public abstract class Nappula {
     
+    /**
+     * Ruutu jolla nappula seisoo.
+     */
     private Ruutu ruutu;
+    
+    /**
+     * Joukkue johon nappula kuuluu
+     */
     private Joukkue joukkue;
+    
+    /**
+     * Ruudut joihin nappula voi kulkea tai joita se uhkaa.
+     * Omalla vuorolla siirtomahdollisuudet kuvaavat ruutuja joihin nappula voi siirtyä.
+     * Vastustajan vuorolla siirtomahdollisuudet kuvaavat ruutuja joita nappula uhkaa.
+     */
     protected ArrayList<Ruutu> siirtoMahdollisuudet;
     
     /**
      * Ympäröivät poikkeamapisteet (eng. offset) joihin tämä nappula voi siirtyä.
      * Esim torni : [(0, 1), (1, 0) , (0, -1), (-1, 0)];
+     * Sotilas on ainoa nappula joka ei käytä tätä ominaisuutta, koska sillä on syö ja kävele ruudut erikseen.
      */
     protected Point[] kaveleTaiSyo;
     
@@ -40,7 +54,10 @@ public abstract class Nappula {
      */
     protected int maxAskeleet;
     
-    
+    /**
+     * Nappulaa kuvaava tallennusmerkki ilman joukkueen tallennusmerkkiä.
+     * @return Tallennusmerkki joka kuvaa nappulaa tiedostossa.
+     */
     public abstract String getTallennusMerkki();
     
     
@@ -89,7 +106,6 @@ public abstract class Nappula {
                 if (kasiteltavaRuutu == null) break;
                 if (kasiteltavaRuutu.getNappula() == null) {
                     lisaaSiirtoMahdollisuus(kasiteltavaRuutu, tarkista);
-                    continue;
                 } else {
                     if (!kasiteltavaRuutu.getNappula().getJoukkue().equals(getJoukkue())) {
                         lisaaSiirtoMahdollisuus(kasiteltavaRuutu, tarkista);
@@ -117,10 +133,6 @@ public abstract class Nappula {
      * @return true = voi siirtää, false = laiton siirto
      */
     public boolean tarkistaSiirtomahdollisuus(Ruutu ruutu) {
-//        if (!joukkue.onkoShakattu() && !onkoUhattu()) {//Nopeuttaa ettei tarvi turhaan tarkastaa
-//            System.out.println("Ei olla shakissa eikä uhattuna");
-//            return true;
-//        }
         Ruutu aloitusRuutu = getRuutu();
         Nappula syotyNappula = ruutu.getNappula();
         siirrä(ruutu);
@@ -168,7 +180,7 @@ public abstract class Nappula {
      * @see Ratsu
      * @see Sotilas
      */
-    public static Nappula luoNappula(String merkki) throws Exception {
+    public static Nappula luoNappula(String merkki) throws IllegalArgumentException {
         if (merkki.equals("aa")) return null;
         Joukkue nappulanJoukkue = Joukkue.getJoukkue(merkki.charAt(0));
         
@@ -190,6 +202,11 @@ public abstract class Nappula {
         }
     }
     
+    /**
+     * Palauttaa nappulan niin kuin se tallennettaisiin tiedostoon.
+     * Ensin joukkueen merkki ja sitten nappulan merkki. Esim musta torni olisi mt
+     * @return Nappulaa kuvaava merkkijono.
+     */
     @Override
     public String toString() {
         return getJoukkue().getTallennusMerkki()+getTallennusMerkki();

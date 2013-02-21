@@ -16,10 +16,25 @@ import logiikka.nappulat.Nappula;
  * @author Antti
  */
 public class LautaKangas extends JComponent {
+    /**
+     * Yksittäisen ruudun leveys ja korkeus
+     */
     private final static int RUUDUN_KOKO = 55;
+    
+    /**
+     * ShakkiPeli jota pelataan.
+     */
     private ShakkiPeli shakkiPeli;
+    
+    /**
+     * Nappula joka on valittu hiirellä. Null jos nappulaa ei ole valittu.
+     */
     private Nappula valittu;
     
+    /**
+     * Luo uuden LautaKangas olion 
+     * @param shakkiPeli ShakkiPeli olio jota piirretään.
+     */
     public LautaKangas(ShakkiPeli shakkiPeli) {
         this();
         setShakkiPeli(shakkiPeli);

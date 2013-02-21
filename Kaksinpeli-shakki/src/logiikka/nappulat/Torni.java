@@ -15,6 +15,10 @@ import logiikka.joukkueet.Joukkue;
  */
 public class Torni extends Nappula {
     public final static String TALLENNUSMERKKI = "t";
+    
+    /**
+     * @see Nappula#Nappula(logiikka.joukkueet.Joukkue) 
+     */
     public Torni(Joukkue joukkue) {
         super(joukkue);
         kaveleTaiSyo = new Point[4];

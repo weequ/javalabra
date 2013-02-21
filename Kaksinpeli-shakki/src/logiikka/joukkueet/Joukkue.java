@@ -14,12 +14,16 @@ public class Joukkue {
     public static Joukkue MUSTA = new Joukkue('m');
     public static Joukkue VALKOINEN = new Joukkue('v');
     
-    private ArrayList<Nappula> nappulat;
+    private ArrayList<Nappula> elossaOlevatNappulat;
     private Kuningas kuningas;
+    
+    /**
+     * Merkki joka kuvaa tätä joukkuetta tiedostoon tallennettaessa.
+     */
     private final char TALLENNUSMERKKI;
     
     private Joukkue(char tallennusMerkki) {
-        nappulat = new ArrayList<>();
+        elossaOlevatNappulat = new ArrayList<>();
         this.TALLENNUSMERKKI = tallennusMerkki;
         kuningas = null;
     }
@@ -33,7 +37,7 @@ public class Joukkue {
      * @param nappula Nappula joka lisätään joukkueelle.
      */
     public void addNappula(Nappula nappula) {
-        nappulat.add(nappula);
+        elossaOlevatNappulat.add(nappula);
     }
     
     /**
@@ -42,7 +46,7 @@ public class Joukkue {
      * @return Onnistuiko poisto eli kuuluiko tämä nappula ylipäänsä tälle joukkueelle.
      */
     public boolean removeNappula(Nappula nappula) {
-        return nappulat.remove(nappula);
+        return elossaOlevatNappulat.remove(nappula);
     }
     
     /**
@@ -51,13 +55,13 @@ public class Joukkue {
      * @return Joukkue jolle parametrina annettu tallennusmerkki kuuluu.
      * @throws Exception Jos parametrina annettu tallennusmerkki ei kuulu kummallekkaan joukkueelle.
      */
-    public static Joukkue getJoukkue(char tallennusmerkki) throws Exception {
+    public static Joukkue getJoukkue(char tallennusmerkki) throws IllegalArgumentException {
         if (tallennusmerkki == Joukkue.MUSTA.getTallennusMerkki()) {
             return Joukkue.MUSTA;
         } else if (tallennusmerkki == Joukkue.VALKOINEN.getTallennusMerkki()) {
             return Joukkue.VALKOINEN;
         } else {
-            throw new Exception("Vääränlainen tallennusmerkki.");
+            throw new IllegalArgumentException("Vääränlainen tallennusmerkki.");
         }
     }
     
@@ -75,7 +79,7 @@ public class Joukkue {
      * @param tarkista Tarkistetaanko jokaisella siirtomahdollisuudella syntyykö shakki?
      */
     public void laskeSiirtoMahdollisuudet(boolean tarkista) {
-        for (Nappula nappula : nappulat) {
+        for (Nappula nappula : elossaOlevatNappulat) {
             nappula.laskeSiirtoMahdollisuudet(tarkista);
         }
     }
@@ -114,7 +118,7 @@ public class Joukkue {
      * @return True jos ruutu kuuluu siirtomahdollisuuksiin.
      */
     public boolean onkoSiirtoMahdollisuuksissa(Ruutu ruutu) {
-        for (Nappula omaNappula : nappulat) {
+        for (Nappula omaNappula : elossaOlevatNappulat) {
             if (omaNappula.getSiirtoMahdollisuudet().contains(ruutu)) {
                 return true;
             }
