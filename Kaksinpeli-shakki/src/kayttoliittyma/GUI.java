@@ -4,14 +4,21 @@
  */
 package kayttoliittyma;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import logiikka.ShakkiPeli;
 import tiedostonKasittely.PeliTiedostoMuuntaja;
+import tiedostonKasittely.ResurssienLukija;
 
 /**
  * Luokka joka sisältää ohjelman graafiset komponentit
@@ -23,13 +30,20 @@ public class GUI extends JFrame {
     private ShakkiPeli shakkiPeli;
     
     public GUI(ShakkiPeli shakkiPeli) {
+        JTextArea lokiText = new LokiTextArea();
+        Logger.getGlobal().log(Level.INFO, "Tervetuloa kaksinpelishakkiin.\n"+
+                "Klikkaa nappulaa siirtääksesi sitä. Oikeasta laidasta voit tallentaa pelin, avata tallennetun pelin\n"+
+                "tai aloittaa kokonaan uuden pelin. Muistathan että uuden pelin aloittaminen pyyhkii käynnissä\n"+
+                "olevan pelin tallentamatta sitä ensin.");
         this.shakkiPeli = shakkiPeli;
         setTitle("Kaksinpeli-shakki");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.lautaKangas = new LautaKangas(shakkiPeli);
-        setLayout(new FlowLayout());
-        add(lautaKangas);
+        setLayout(new BorderLayout());
+        add(lautaKangas, BorderLayout.CENTER);
         lisaaNappulat();
+        JScrollPane scrollattavaLokiText = new JScrollPane(lokiText, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        add(scrollattavaLokiText, BorderLayout.SOUTH);
         setVisible(true);
         pack();
     }
@@ -50,36 +64,69 @@ public class GUI extends JFrame {
     }
     
     /**
-     * Lisää avaa ja tallenna nappulan käyttöliittymään.
+     * Lisää uusi peli-, avaa- ja tallenna nappulan käyttöliittymään.
      */
     private void lisaaNappulat() {
+        
+        JPanel nappulaPaneeli = new JPanel();
+        nappulaPaneeli.setLayout(new GridLayout(3, 1));
+        
+        //UusiPeli nappula
+        JButton uusiPeli = new JButton("Uusi peli");
+        uusiPeli.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Logger.getGlobal().log(Level.INFO, "Aloitetaan uusi peli ja pyyhitään vanha.");
+                ShakkiPeli uusiPeli = PeliTiedostoMuuntaja.tekstiShakkiPeliksi(ResurssienLukija.lueTiedostoTekstiksi("/resurssit/aloitusLauta.txt"));
+                setShakkiPeli(uusiPeli);
+            }
+        });
+        nappulaPaneeli.add(uusiPeli);
+        
         //Avaa nappula
         JButton avaaPeli = new JButton("Avaa peli");
         avaaPeli.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Logger.getGlobal().log(Level.INFO, "Etsi shakkipeli jonka haluat avata, valitse se ja paina sitten Avaa.");
                 String polku = kayttajanValitsemaTiedosto("Open");
-                ShakkiPeli uusiPeli = PeliTiedostoMuuntaja.avaaPeli(polku);
-                if (uusiPeli != null) {
-                    setShakkiPeli(uusiPeli);
+                if (polku == null) {
+                    Logger.getGlobal().log(Level.INFO, "Peruutit pelin avaamisen.");
                 } else {
-                    System.out.println("Virhe avattaessa tiedostoa");
+                    ShakkiPeli uusiPeli = PeliTiedostoMuuntaja.avaaPeli(polku);
+                    if (uusiPeli != null) {
+                        setShakkiPeli(uusiPeli);
+                    } else {
+                        Logger.getGlobal().log(Level.WARNING, "Virhe avattaessa tiedostoa. \nVarmista että tiedosto on sisältää tällä ohjelmmalla tallennetun shakkipelin.");
+                    }
                 }
             }
         });
-        add(avaaPeli);
+        nappulaPaneeli.add(avaaPeli);
         
         //Tallenna nappula
         JButton tallennaPeli = new JButton("Tallenna peli");
         tallennaPeli.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Logger.getGlobal().log(Level.INFO, "Siirry kansioon johon haluat tallentaa shakkipelin, nimeä se ja paina sitten Tallenna.");
                 String polku = kayttajanValitsemaTiedosto("Save");
-                boolean tallennusOnnistui = PeliTiedostoMuuntaja.tallennaPeli(shakkiPeli, polku);
-                if (!tallennusOnnistui) System.out.println("Tallennus epäonnistui");
+                if (polku == null) {
+                    Logger.getGlobal().log(Level.INFO, "Peruutit pelin talletuksen.");
+                } else {
+                    boolean tallennusOnnistui = PeliTiedostoMuuntaja.tallennaPeli(shakkiPeli, polku);
+                    if (!tallennusOnnistui) {
+                        Logger.getGlobal().log(Level.WARNING, "Tallennus epäonnistui");
+                    } else {
+                        Logger.getGlobal().log(Level.WARNING, "Shakkipeli tallennettu tiedostoon "+polku);
+                    }
+                }
             }
         });
-        add(tallennaPeli);
+        nappulaPaneeli.add(tallennaPeli);
+        
+        add(nappulaPaneeli, BorderLayout.EAST);
     }
     
     /**

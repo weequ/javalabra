@@ -127,6 +127,18 @@ public class Joukkue {
     }
     
     /**
+     * Laskee siirtomahdollisuuksien määrän ja palauttaa sen.
+     * @return 
+     */
+    public int getSiirtomahdollisuuksienMaara() {
+        int tulos = 0;
+        for (Nappula omaNappula : elossaOlevatNappulat) {
+            tulos += omaNappula.getSiirtoMahdollisuudet().size();
+        }
+        return tulos;
+    }
+    
+    /**
      * Kuuluuko parametrina annettu nappula tämän joukkueen siirtomahdollisuuksiin?
      * @param nappula Nappula jonka suhteen tarkistus tehdään.
      * @return True jos nappula kuuluu siirtomahdollisuuksiin.
@@ -134,5 +146,14 @@ public class Joukkue {
     public boolean onkoSiirtoMahdollisuuksissa(Nappula nappula) {
         Ruutu nappulanRuutu = nappula.getRuutu();
         return onkoSiirtoMahdollisuuksissa(nappulanRuutu);
+    }
+    
+    @Override
+    public String toString() {
+        switch (TALLENNUSMERKKI) {
+            case 'm': return "Musta";
+            case 'v': return "Valkoinen";
+            default: return null;
+        }
     }
 }

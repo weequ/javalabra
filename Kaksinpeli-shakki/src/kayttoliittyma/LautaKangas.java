@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import logiikka.ShakkiPeli;
 import logiikka.lauta.Ruutu;
@@ -77,8 +79,15 @@ public class LautaKangas extends JComponent {
         repaint();
     }
     
+    /**
+     * Asetta uuden shakkipelin pelattavaksi ja piirrettäväksi.
+     * @param shakkiPeli 
+     */
     public void setShakkiPeli(ShakkiPeli shakkiPeli) {
         this.shakkiPeli = shakkiPeli;
+        Logger.getGlobal().log(Level.INFO, "Shakkipeli ladattu. Siirtovuorossa on "+this.shakkiPeli.getVuoro().toString()+".");
+        valittu = null;
+        repaint();
     }
     
     /**

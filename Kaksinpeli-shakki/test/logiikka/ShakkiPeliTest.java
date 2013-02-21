@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tiedostonKasittely.PeliTiedostoMuuntaja;
+import tiedostonKasittely.ResurssienLukija;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ShakkiPeliTest {
     
     @Before
     public void setUp() throws Exception {
-        shakkiPeli = new ShakkiPeli();
+        shakkiPeli = PeliTiedostoMuuntaja.tekstiShakkiPeliksi(ResurssienLukija.lueTiedostoTekstiksi("/resurssit/aloitusLauta.txt"));
     }
     
     @After

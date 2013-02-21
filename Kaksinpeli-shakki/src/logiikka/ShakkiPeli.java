@@ -1,10 +1,14 @@
 package logiikka;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import kayttoliittyma.GUI;
 import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 import logiikka.lauta.Ruudukko;
 import tiedostonKasittely.Lukija;
+import tiedostonKasittely.PeliTiedostoMuuntaja;
+import tiedostonKasittely.ResurssienLukija;
 
 /**
  * Isäntäluokka josta käsin on saatavilla kaikki shakkipelin kannalta olennainen tieto.
@@ -20,16 +24,6 @@ public class ShakkiPeli {
      * Ruudukko jolla pelataan.
      */
     private Ruudukko ruudukko;
-    
-    /**
-     * Luo uuden shakkipelin aloitusLauta.txt tiedostosta.
-     * @throws Exception 
-     */
-    public ShakkiPeli() throws Exception {
-        Lukija lukija = new Lukija("aloitusLauta.txt");
-        ruudukko = new Ruudukko(lukija.getText());
-        setVuoro(Joukkue.VALKOINEN);
-    }
     
     /**
      * Kokoaa ruudukon ja vuoron uudeksi shakkipeliksi
@@ -57,7 +51,16 @@ public class ShakkiPeli {
         this.vuoro = vuoro;
         this.vuoro.laskeSiirtoMahdollisuudet(true);
         this.vuoro.getVastustaja().laskeSiirtoMahdollisuudet(false);
-        if (this.vuoro.onkoShakattu()) System.out.println("Shakki!");
+        int siirtomahdollisuuksienMaara = this.vuoro.getSiirtomahdollisuuksienMaara();
+        if (this.vuoro.onkoShakattu()) {
+            if (siirtomahdollisuuksienMaara == 0) {
+                Logger.getGlobal().log(Level.INFO, "Shakkimatti. "+this.vuoro.getVastustaja().toString()+" voitti!");
+            } else {
+                Logger.getGlobal().log(Level.INFO, this.vuoro.getVastustaja().toString()+" shakkaa!");
+            }
+        } else if (siirtomahdollisuuksienMaara == 0){
+            Logger.getGlobal().log(Level.INFO, "Pattitilanne. Tasapeli!");
+        }
     }
     
     /**

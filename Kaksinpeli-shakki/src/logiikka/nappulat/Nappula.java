@@ -142,7 +142,6 @@ public abstract class Nappula {
         ruutu.setNappula(syotyNappula);
         if (syotyNappula != null) joukkue.getVastustaja().addNappula(syotyNappula);
         joukkue.getVastustaja().laskeSiirtoMahdollisuudet(false);
-        //System.out.println(tulos);
         return tulos;
      }
     

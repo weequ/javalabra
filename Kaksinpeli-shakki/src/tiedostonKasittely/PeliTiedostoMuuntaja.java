@@ -63,11 +63,10 @@ public class PeliTiedostoMuuntaja {
      * @return Tekstistä muodostettu ShakkiPeli olio.
      * @throws IllegalArgumentException Jos teksti on virheellinen.
      */
-    private static ShakkiPeli tekstiShakkiPeliksi(String teksti) throws IllegalArgumentException {
+    public static ShakkiPeli tekstiShakkiPeliksi(String teksti) throws IllegalArgumentException {
         String rivinVaihto = System.getProperty("line.separator");
         int ensimmainenRivinVaihto = teksti.indexOf(rivinVaihto);
         String ensimmainenRivi = teksti.substring(0, ensimmainenRivinVaihto);
-        System.out.println(ensimmainenRivi);
         String[] parametrit = trimArr(ensimmainenRivi.split(","));
         String ruudukkoString = teksti.substring(ensimmainenRivinVaihto+rivinVaihto.length());
         Ruudukko ruudukko = new Ruudukko(ruudukkoString);

@@ -48,4 +48,5 @@ public class Lukija {
     public String getText() {
         return sisalto;
     }
+
 }
