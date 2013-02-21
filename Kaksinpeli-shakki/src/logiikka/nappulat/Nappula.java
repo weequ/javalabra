@@ -180,9 +180,15 @@ public abstract class Nappula {
      * @see Ratsu
      * @see Sotilas
      */
-    public static Nappula luoNappula(String merkki) throws IllegalArgumentException {
+    public static Nappula luoNappula(String merkki) {
         if (merkki.equals("aa")) return null;
-        Joukkue nappulanJoukkue = Joukkue.getJoukkue(merkki.charAt(0));
+        Joukkue nappulanJoukkue;
+        try {
+            nappulanJoukkue = Joukkue.getJoukkue(merkki.charAt(0));
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Nappulan luonti epäonnistui.");
+            return null;
+        }
         
         switch (String.valueOf(merkki.charAt(1))) {
             case Kuningas.TALLENNUSMERKKI:
@@ -198,6 +204,7 @@ public abstract class Nappula {
             case Sotilas.TALLENNUSMERKKI:
                 return new Sotilas(nappulanJoukkue);
             default: 
+                System.out.println("Tallennusmerkki ei vastaa mitään nappulaa");
                 return null;
         }
     }
