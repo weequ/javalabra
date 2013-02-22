@@ -119,7 +119,7 @@ public class GUI extends JFrame {
                     if (!tallennusOnnistui) {
                         Logger.getGlobal().log(Level.WARNING, "Tallennus epäonnistui");
                     } else {
-                        Logger.getGlobal().log(Level.WARNING, "Shakkipeli tallennettu tiedostoon "+polku);
+                        Logger.getGlobal().log(Level.INFO, "Shakkipeli tallennettu tiedostoon "+polku);
                     }
                 }
             }

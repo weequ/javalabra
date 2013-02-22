@@ -85,7 +85,7 @@ public class LautaKangas extends JComponent {
      */
     public void setShakkiPeli(ShakkiPeli shakkiPeli) {
         this.shakkiPeli = shakkiPeli;
-        Logger.getGlobal().log(Level.INFO, "Shakkipeli ladattu. Siirtovuorossa on "+this.shakkiPeli.getVuoro().toString()+".");
+        Logger.getGlobal().log(Level.INFO, "Shakkipeli ladattu. Siirtovuorossa on "+this.shakkiPeli.getVuoro().toString().toLowerCase()+".");
         valittu = null;
         repaint();
     }
