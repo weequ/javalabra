@@ -3,4 +3,6 @@
 
 Ohjelmoinnin harjoitustyö
 
-kaksinpelishakki
+kaksinpeli-shakki
+
+Jar tiedosto löytyy Kansiosta Kaksinpeli-shakki/dist

@@ -16,3 +16,5 @@
 18.1 1h Koodin siistimistä ja javadoc kommentteja
 19.1 1h Koodin siistimistä ja javadoc kommentteja
 20.1 3h Koodin siistimistä, javadoc kommentteja, dokumentointia.
+21.1 6h Neuvoja antava ja virheistä kertova tekstilaatikko graafiseen käyttöliittymään.
+22.1 5h Dokumenttien päivittämistä ja tekemistä.

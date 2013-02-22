@@ -2,13 +2,8 @@ package logiikka;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import kayttoliittyma.GUI;
-import kayttoliittyma.Kuvat;
 import logiikka.joukkueet.Joukkue;
 import logiikka.lauta.Ruudukko;
-import tiedostonKasittely.Lukija;
-import tiedostonKasittely.PeliTiedostoMuuntaja;
-import tiedostonKasittely.ResurssienLukija;
 
 /**
  * Isäntäluokka josta käsin on saatavilla kaikki shakkipelin kannalta olennainen tieto.
